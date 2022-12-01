@@ -8,6 +8,8 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
+//import javax.rmi.CORBA.Util;
+
 public class Bdika {
 	public static Queue <int[]> OPEN = new LinkedList<int []>();
 
@@ -115,7 +117,7 @@ public class Bdika {
 
 	public static void main(String args[]) {
 
-	    int statesVisited = 0;
+	  /*  int statesVisited = 0;
 
 	    int [] start = {1,2,3,4,5,6,11,7,9,10,8,0};
 	    		
@@ -214,6 +216,10 @@ public class Bdika {
 
 	
 
-	//print(X);
+	//print(X);*/
+		
+	      System.out.println("j");
+		
+	}
 }
 

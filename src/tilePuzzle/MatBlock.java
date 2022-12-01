@@ -1,23 +1,20 @@
 package tilePuzzle;
 
- class Block {
+import java.util.Arrays;
+
+class Block {
     
 	 int num;
-	 String color ; // red,blue,green
-	// int visit; //0,1,2
-	
+	 String color ; // red,black,green
 	 int cost;
+	 int [] mat=new int [2];
 	
 	 
-	/* public Block() {
-		 this.name= null;
-			this.color=0;
-			this.visit=0;
-	}*/
+	
 	
 	 Block( int num){
 		this.num= num;
-		//this.visit=0;
+		
 		this.color="green";
 		
 		this.cost=1;
@@ -25,7 +22,7 @@ package tilePuzzle;
 	 }
 	 Block( int num, String c){
 			this.num= num;
-			//this.visit=0;
+			
 			this.color=c;
 			
 			if(c=="red")
@@ -36,77 +33,65 @@ package tilePuzzle;
 		 }
 	
 	 
-	
+	 @Override
 	 public String toString() {
 		 return "num: "+num+" color: "+color;
 	 }
 }
  class Node{
-	 Block [] arrBlock;
-	 int path;
+	 Block [] arrBlock=new Block[Ex1.col*Ex1.row];
+	
 	 int cost;
 	 char pather;
+	 int f;
+	 String mark;
+	 String path=null;
 	 
 	 public Node(Block [] arr) {
+		
 		 this.arrBlock=arr;
-		// this.path=0;
-		 //this.cost=0;
-		 
+		this.path=null;
+		 this.cost=0;
+		
 		
 	}
+	 public Node(Node other) {
+		 this.arrBlock=other.arrBlock;
+		 this.cost=other.cost;
+		 this.f=other.f;
+		 this.mark=other.mark;
+		 this.pather=other.pather;
+		 this.path=other.path;
+	 }
+	 /*
+	  * Each block in the array has a variable that holds
+	  *  the position of that block in the matrix. 
+	  *  Help us find distances in the heuristic function
+	  */
+	 public static void initMat(Node e) {
+		 int k=0;
+    	 for(int i=0;i<Ex1.row;i++) {
+    		 for(int j=0; j<Ex1.col;j++) {
+    			
+    			 e.arrBlock[k].mat[0]=i;
+    			 e.arrBlock[k].mat[1]=j;
+    			 k++;
+    		 }
+    	 }
+	 }
 	 
-	 public String toString() {
-		 return "path: "+path+" ,cost: "+cost+" ,p: "+pather+"|";
-	 }
+	
 	 @Override
-	 public boolean equals(Object obj) {
-		 if (this == obj)
-		        return true;
-		    if (obj == null)
-		        return false;
-		 
-		    Node other = (Node) obj;
-		    if (path == other.path)
-		        return true;
-		   
-		  
-		    return false;
+	 public String toString() {
+		 return "path: "+path+" ,cost: "+cost+" ,mark: "+mark+" ,p: "+pather+"|";
+		
 	 }
+	
+	
+	
  }
-public class MatBlock{
-	Block [][] matBlock;
-	
-	
-	 public MatBlock(int r, int c){
-		matBlock=new Block[r][c];
-	}
-	 public void add(int n, String c) {
-		 Block h= new Block(n, c);
-		
-		 for (int g=0; g<2 ; g++) {
-			 for (int t=0; t<2 ;t++) {
-				 
-				  if (matBlock[g][t] ==null) {
-			 
-			       matBlock[g][t]=h;
-			       System.out.println(h.toString());
-			     
-			      return;
-		 }
- 
-			 }
-			
-		 }
-		 
-		
-	 }
 
-public static void main(String[] args) {
-	MatBlock k=new MatBlock(2, 2);
 
-	k.add( 3,"r");
-	k.add(4,"j");
-	
-}
-}
+
+
 
