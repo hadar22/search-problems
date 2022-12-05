@@ -16,6 +16,14 @@ The rest of the lines = Initial arrangement of the board
 Example of input: 
 (https://github.com/hadar22/search-problems/blob/master/input.txt)
 
+### Output:
+line 1 = The moves - the block that moves and the direction that moves (R,L,D,U) <br/>
+line 2 = The number of vertices created<br/>
+line 3 = The cost of the blocks we moved to reach a solution<br/>
+line 4 = Running time in seconds - the time it took for the algorithm to exhaust the solution<br/>
+
+If there is no solution - "no path"
+
 Example of output:
 (https://github.com/hadar22/search-problems/blob/master/output.txt)
 
